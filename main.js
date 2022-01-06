@@ -21,7 +21,9 @@ var ball = {
     dy:3
 }
 
-
+rightwristX = "";
+rightwristY = "";
+scoree = "";
 
 function setup(){
   
@@ -179,4 +181,26 @@ function paddleInCanvas(){
   if(mouseY < 0){
     mouseY =0;
   }  
+}
+
+
+function gotPoses(results)
+{
+if(results.length > 0)
+{
+	console.log(results);
+	rightwristX = results[0].pose.rightWrist.x;
+	rightwristY = results[0].pose.rightWrist.y;
+  scoree =  results[0].pose.keypoints[10].score;
+}
+}
+
+function draw()
+{
+  if(scoree.length > 0.2)
+  {
+    fill("#ff0011");
+    stroke("#ff0011");
+    circle(rightwristX , rightwristY , 10);
+  }
 }
