@@ -25,6 +25,7 @@ rightwristX = "";
 rightwristY = "";
 scoree = "";
 
+game_status = "";
 function setup(){
   
 
@@ -40,12 +41,23 @@ poseNet = ml5.poseNet(video, modelLoaded);
 poseNet.on('pose', gotPoses);
 }
 
+startGame()
+{
+  game_status = "start";
+  document.getElementById("status").innerHTML = "Game is loaded";
+}
+
 function modelLoaded()
 {
   console.log("Model is Loaded");
 }
 
 function draw(){
+
+if(game_status == "start")
+{
+  
+}
 
  background(0); 
  image(video,0,0,700,600); 
